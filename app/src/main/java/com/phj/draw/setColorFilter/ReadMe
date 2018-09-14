@@ -1,0 +1,92 @@
+/**
+ * A color filter can be used with a {@link Paint} to modify the color of
+ * each pixel drawn with that paint. This is an abstract class that should
+ * never be used directly.
+ * 彩色滤镜可与{@link Paint}一起使用，以修改使用该绘制绘制的每个像素的颜色。
+ * 这是一个永远不应该直接使用的抽象类。
+ */
+
+
+1、ColorMatrixColorFilter
+/**
+ * A color filter that transforms colors through a 4x5 color matrix. This filter
+ * can be used to change the saturation of pixels, convert from YUV to RGB, etc.
+ * 通过4x5颜色矩阵转换颜色的滤色器。 此滤镜可用于更改像素的饱和度，从YUV转换为RGB等。
+ * @see ColorMatrix
+ */
+
+ 2、LightingColorFilter （ColorMatrixColorFilter太难，色彩简化版）
+/**
+ * A color filter that can be used to simulate simple lighting effects.
+ * A <code>LightingColorFilter</code> is defined by two parameters, one
+ * used to multiply the source color (called <code>colorMultiply</code>)
+ * and one used to add to the source color (called <code>colorAdd</code>).
+ * The alpha channel is left untouched by this color filter.
+ *
+ *
+ * 可用于模拟简单照明效果的滤色镜。 <code> LightingColorFilter </ code>
+ * 由两个参数定义，一个用于乘以源颜色（称为<code> colorMultiply </ code>），
+ * 另一个用于添加源颜色（称为<code> colorAdd </ 代码>）此颜色过滤器保持Alpha通道不受影响。
+ *
+ *
+ * Given a source color RGB, the resulting R'G'B' color is computed thusly:
+ * <pre>
+ * R' = R * colorMultiply.R + colorAdd.R
+ * G' = G * colorMultiply.G + colorAdd.G
+ * B' = B * colorMultiply.B + colorAdd.B
+ * </pre>
+ * The result is pinned to the <code>[0..255]</code> range for each channel.
+ */
+
+
+
+
+ 3、PorterDuffColorFilter // 图形混合的概念
+/**
+ * A color filter that can be used to tint the source pixels using a single
+ * color and a specific {@link PorterDuff Porter-Duff composite mode}.
+ *
+ * 一种滤色镜，可用于使用单一颜色和特定的{@link PorterDuff Porter-Duff复合模式}对源像素进行着色。
+ */
+
+ public PorterDuffColorFilter(int srcColor, PorterDuff.Mode mode)
+     int srcColor：0xAARRGGBB类型的颜色值。
+     PorterDuff.Mode mode：表示混合模式，枚举值有18个，表示各种图形混合模式,有：
+
+
+     Mode.SRC
+     Mode.DST
+     Mode.SRC_OVER
+     Mode.DST_OVER
+     Mode.SRC_IN
+     Mode.DST_IN
+     Mode.SRC_OUT  透明
+     Mode.DST_OUT
+     Mode.SRC_ATOP
+     Mode.DST_ATOP
+
+     Mode.CLEAR
+     Mode.XOR
+
+*    Mode.DARKEN     变暗
+*    Mode.LIGHTEN    变亮
+*    Mode.MULTIPLY   正片叠底
+*    Mode.SCREEN     滤色
+*    Mode.OVERLAY    叠加
+*    Mode.ADD        饱和度相加
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

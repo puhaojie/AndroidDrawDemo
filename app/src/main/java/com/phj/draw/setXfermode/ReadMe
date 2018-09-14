@@ -1,0 +1,26 @@
+1、AvoidXfermode  已经被弃用了
+/**
+ * AvoidXfermode xfermode will draw the src everywhere except on top of the
+ * opColor or, depending on the Mode, draw only on top of the opColor.
+ *
+ * AvoidXfermode xfermode将在除了opColor之外的任何地方绘制src，
+ * 或者根据模式，仅在opColor之上绘制。
+ *
+ * @removed
+ */
+
+
+第一个参数opColor：一个16进制的AARRGGBB的颜色值；
+第二个参数tolerance：源参数值 加减一个值之后的范围
+第三个参数mode：取值有两个Mode.TARGET和Mode.AVOID；Mode.TARGET表示将指定的颜色替换掉
+
+
+1、Mode.ADD（饱和度相加）
+   它的公式是Saturate(S + D)；ADD模式简单来说就是对SRC与DST两张图片相交区域的饱和度进行相加
+2、Mode.LIGHTEN（变亮）
+   它的算法是： [Sa + Da - Sa*Da,Sc*(1 - Da) + Dc*(1 - Sa) + max(Sc, Dc)]
+
+
+
+
+
